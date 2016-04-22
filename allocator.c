@@ -131,3 +131,31 @@ int get_vaddr(int drm_fd, int gem_fd, int size, void **vaddr)
 	*vaddr = map;
 	return 0;
 }
+
+unsigned int get_flink_name(int fd, int gem)
+{
+	struct drm_gem_flink arg = { 0, };
+
+	arg.handle = gem;
+	if (drm_ioctl(fd, DRM_IOCTL_GEM_FLINK, &arg)) {
+		fprintf(stderr,
+			"fail : get flink from gem:%d (DRM_IOCTL_GEM_FLINK)\n",
+			gem);
+		return 0;
+	}
+	return (unsigned int)arg.name;
+}
+
+int import_gem_from_flink(int fd, unsigned int flink_name)
+{
+	struct drm_gem_open arg = { 0, };
+	/* struct nx_drm_gem_info info = { 0, }; */
+
+	arg.name = flink_name;
+	if (drm_ioctl(fd, DRM_IOCTL_GEM_OPEN, &arg)) {
+		fprintf(stderr, "fail : cannot open gem name=%d\n", flink_name);
+		return -EINVAL;
+	}
+
+	return arg.handle;
+}
