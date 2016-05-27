@@ -27,21 +27,24 @@ Nexell drm allocator library (devel)
 %setup -q
 
 %build
-make
+autoreconf -v --install || exit 1
+%configure
+make %{?_smp_mflags}
 
 %postun -p /sbin/ldconfig
 
 %install
 rm -rf %{buildroot}
+make install DESTDIR=%{buildroot}
+
+find %{buildroot} -type f -name "*.la" -delete
 
 mkdir -p %{buildroot}/usr/include
 cp %{_builddir}/%{name}-%{version}/nx-drm-allocator.h %{buildroot}/usr/include
 
-mkdir -p %{buildroot}/usr/lib
-cp %{_builddir}/%{name}-%{version}/libnx-drm-allocator.so  %{buildroot}/usr/lib
-
 %files
-%attr (0644, root, root) %{_libdir}/libnx-drm-allocator.so
+%{_libdir}/libnx_drm_allocator.so
+%{_libdir}/libnx_drm_allocator.so.*
 
 %files devel
-%attr (0644, root, root) %{_includedir}/nx-drm-allocator.h
+%{_includedir}/nx-drm-allocator.h
