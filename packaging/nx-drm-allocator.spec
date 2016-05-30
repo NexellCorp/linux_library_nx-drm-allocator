@@ -6,6 +6,7 @@ Summary: Nexell drm allocator library
 Group: Development/Libraries
 Source:  %{name}-%{version}.tar.gz
 
+BuildRequires:  pkgconfig automake autoconf libtool
 BuildRequires:  pkgconfig(glib-2.0)
 
 Requires(post): /sbin/ldconfig
