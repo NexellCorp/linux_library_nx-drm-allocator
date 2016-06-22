@@ -1,6 +1,6 @@
 Name:    nx-drm-allocator
 Version: 0.0.1
-Release: 2
+Release: 3
 License: Apache 2.0
 Summary: Nexell drm allocator library
 Group: Development/Libraries
