@@ -1,7 +1,7 @@
 Name:    nx-drm-allocator
 Version: 0.0.1
 Release: 3
-License: Apache 2.0
+License: LGPLv2+
 Summary: Nexell drm allocator library
 Group: Development/Libraries
 Source:  %{name}-%{version}.tar.gz
@@ -47,6 +47,8 @@ cp %{_builddir}/%{name}-%{version}/nx-drm-allocator.h %{buildroot}/usr/include
 %files
 %{_libdir}/libnx_drm_allocator.so
 %{_libdir}/libnx_drm_allocator.so.*
+%license LICENSE.LGPLv2+
 
 %files devel
 %{_includedir}/nx-drm-allocator.h
+%license LICENSE.LGPLv2+
