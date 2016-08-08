@@ -19,7 +19,7 @@ Nexell allocator library
 %package devel
 Summary: Nexell drm allocator library
 Group: Development/Libraries
-License: Apache 2.0
+License: LGPLv2+
 Requires: %{name} = %{version}-%{release}
 
 %description devel
