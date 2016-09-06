@@ -1,6 +1,6 @@
 Name:    nx-drm-allocator
-Version: 0.0.1
-Release: 3
+Version: 1.0.0
+Release: 1
 License: LGPLv2+
 Summary: Nexell drm allocator library
 Group: Development/Libraries
