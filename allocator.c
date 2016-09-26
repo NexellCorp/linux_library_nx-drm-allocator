@@ -61,7 +61,7 @@ int open_drm_device(void)
 /**
  * return gem_fd
  */
-int alloc_gem(int drm_fd, int size, int flags)
+int alloc_gem(int drm_fd, unsigned int size, int flags)
 {
 	struct nx_drm_gem_create arg = { 0, };
 	int ret;
